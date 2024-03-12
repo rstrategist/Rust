@@ -1,4 +1,19 @@
 fn main() {
+    println!("Now running the loop with break function:");
+    loop_with_break();
+    println!("Now running the labelled loop within a loop function:");
+    loop_loop();
+    println!("Now running the conditional loop with while function:");
+    loop_while();
+    println!("Now running the loop through collection function:");
+    loop_collection();
+    println!("Now running the concise loop through collection function:");
+    loop_collection_concise();
+    println!("Now running the for range function:");
+    for_range();
+}
+
+fn loop_with_break() {
     let mut counter = 0;
 
     let result = loop {
@@ -8,12 +23,7 @@ fn main() {
             break counter * 2;
         }
     };
-
     println!("The result is {result}");
-    println!("Now running the labelled loop within a loop function:");
-    loop_loop();
-    println!("Now running the conditional loop with while function:");
-    loop_while();
 }
 
 fn loop_loop() {
@@ -46,5 +56,31 @@ fn loop_while() {
         number -= 1;
     }
 
+    println!("LIFTOFF!!!");
+}
+
+fn loop_collection() {
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    while index < 5 {
+        println!("The value is: {}", a[index]);
+
+        index += 1;
+    }
+}
+
+fn loop_collection_concise() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("The value is: {element}");
+    }
+}
+
+fn for_range() {
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
     println!("LIFTOFF!!!");
 }
