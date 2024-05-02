@@ -2,21 +2,10 @@
     rather than implementation of a restaurant.
 */
 
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-
-        fn seat_at_table() {}
-    }
-
-    mod serving {
-        fn take_order() {}
-
-        fn serve_order() {}
-
-        fn take_payment() {}
-    }
-}
+// Front of house modules have been separated into different modules.
+// See the module structure for more details.
+mod front_of_house;
+pub use crate::front_of_house::hosting;
 
 mod back_of_house {
     pub struct Breakfast {
@@ -36,10 +25,13 @@ mod back_of_house {
 
 pub fn eat_at_restaurant() {
     // Absolute path
-    crate::front_of_house::hosting::add_to_waitlist();
+    //crate::front_of_house::hosting::add_to_waitlist();
 
     // Relative path
-    front_of_house::hosting::add_to_waitlist();
+    //front_of_house::hosting::add_to_waitlist();
+
+    // Imported idiomatic path (modules exported)
+    hosting::add_to_waitlist();
 
     // Order a breakfast in the summer with Rye toast
     let mut meal = back_of_house::Breakfast::summer("Rye");
@@ -51,3 +43,17 @@ pub fn eat_at_restaurant() {
     // to see or modify the seasonal fruit that comes with the meal
     // meal.seasonal_fruit = String::from("blueberries");
 }
+
+// Bring Paths into Scope with the use Keyword
+// Creating Idiomatic use Paths
+
+// use std::fmt::Result;
+// use std::io::Result as IoResult;
+
+// fn function1() -> Result {
+//     // --snip--
+// }
+
+// fn function2() -> IoResult<()> {
+//     // --snip--
+// }
