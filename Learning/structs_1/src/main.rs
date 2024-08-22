@@ -1,3 +1,5 @@
+// use std::io; //Uncomment code
+
 #[derive(Debug)]
 struct Rectangle {
     width: f64,
