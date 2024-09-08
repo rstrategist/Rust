@@ -1,18 +1,18 @@
 struct User {
     username: String,
     email: String,
-    uri: String,
+    url: String,
     active: bool,
 }
 
 // implement associated user function
 impl User {
     // constructor for new user
-    fn new(username: String, email: String, uri: String) -> Self {
+    fn new(username: String, email: String, url: String) -> Self {
         Self {
             username,
             email,
-            uri,
+            url,
             active: true,
         }
     }
@@ -25,21 +25,23 @@ impl User {
     fn from_email() -> Self {
         let mut email = String::from("rashidrasul@me.com");
         println!("Creating new user from email: {}", email);
+
         let username = email.split('@').next().unwrap().to_string();
-        let uri = String::from("https://rashidrasul.com");
+        let url = String::from("https://rashidrasul.com");
+
         Self {
             username,
             email,
-            uri,
+            url,
             active: true,
         }
     }
 } // end of impl block
 
-// create a regular method for the User struct to update_uri
-fn update_uri(user: &mut User, new_uri: String) {
-    println!("Updating URI: {}", user.username);
-    user.uri = new_uri;
+// create a regular method for the User struct to update_url
+fn update_url(user: &mut User, new_url: String) {
+    println!("Updating URL: {}", user.username);
+    user.url = new_url;
 }
 
 // invoke the method on an instance of User
@@ -74,7 +76,7 @@ fn main() {
         new_user.username, new_user.active
     );
 
-    // update URI and print
-    update_uri(&mut new_user, String::from("https://newsite.com"));
-    println!("Updated URI for {}: {}", new_user.username, new_user.uri);
+    // update URL and print
+    update_url(&mut new_user, String::from("https://newsite.com"));
+    println!("Updated URL for {}: {}", new_user.username, new_user.url);
 }
